@@ -124,8 +124,6 @@ class YoutubeEngine:
 		yt = YouTube(url,use_oauth=True,allow_oauth_cache=True)
 		video = yt.streams.filter(only_audio=True).first()
 
-		print("AAHHH")
-
 		# download the file 
 
 		out_file = video.download(output_path=directory) 
