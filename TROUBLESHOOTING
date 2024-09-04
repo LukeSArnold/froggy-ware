@@ -1,0 +1,16 @@
+IF you run into the following error:
+
+"RegexMatchError: get_throttling_function_name: could not find match for multiple"
+ 
+stemming from the "engine/youtube_engine.py" file, the issue is stemming from a pervasive issue in pytube. 
+
+It can be fixed by changing the line 264 to 
+
+`
+r'a\.[a-zA-Z]\s*&&\s*\([a-z]\s*=\s*a\.get\("n"\)\)\s*&&.*?\|\|\s*([a-z]+)',
+    r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])?\([a-z]\)',
+    r'\([a-z]\s*=\s*([a-zA-Z0-9$]+)(\[\d+\])\([a-z]\)',
+`
+
+in the cipher.py in the pytube directory located at `/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pytube` 
+
